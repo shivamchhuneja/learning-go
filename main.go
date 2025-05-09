@@ -15,19 +15,24 @@ func runApp() {
 	fmt.Println("Select the calculator")
 	fmt.Println("1. Investment Calculator")
 	fmt.Println("2. Profit Calculator")
-	fmt.Println("3. Exit")
+	fmt.Println("3. Bank Service")
+	fmt.Println("4. Exit")
 	fmt.Print("Your choice: ")
 
 	fmt.Scan(&option)
 
-	if option == 1 {
+	switch option {
+
+	case 1:
 		investmentCalculator()
-	} else if option == 2 {
+	case 2:
 		profitCalculator()
-	} else if option == 3 {
+	case 3:
+		bankingMode()
+	case 4:
 		fmt.Println("Exiting now...")
 		os.Exit(0)
-	} else {
+	default:
 		fmt.Println("Try again")
 		runApp()
 	}
