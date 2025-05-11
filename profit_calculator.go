@@ -1,11 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	// "errors"
+)
 
 func profitCalculator() {
-	revenue := getUserInput("What is the revenue: ")
-	expense := getUserInput("What is the expense: ")
-	tax := getUserInput("What is the tax rate in %: ")
+	revenue, err := getUserInput("What is the revenue: ")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	expense, err := getUserInput("What is the expense: ")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	tax, err := getUserInput("What is the tax rate in %: ")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	pbt, pat := CalculateFinancials(revenue, expense, tax)
 
