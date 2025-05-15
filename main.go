@@ -1,9 +1,11 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"os"
+
+	"github.com/shivamchhuneja/learning-go/calculators"
+	"github.com/shivamchhuneja/learning-go/structs"
 )
 
 func main() {
@@ -17,7 +19,8 @@ func runApp() {
 	fmt.Println("1. Investment Calculator")
 	fmt.Println("2. Profit Calculator")
 	fmt.Println("3. Bank Service")
-	fmt.Println("4. Exit")
+	fmt.Println("4. Structs")
+	fmt.Println("5. Exit")
 	fmt.Print("Your choice: ")
 
 	fmt.Scan(&option)
@@ -25,29 +28,18 @@ func runApp() {
 	switch option {
 
 	case 1:
-		investmentCalculator()
+		calculators.InvestmentCalculator()
 	case 2:
-		profitCalculator()
+		calculators.ProfitCalculator()
 	case 3:
-		bankingMode()
+		calculators.BankingMode()
 	case 4:
+		structs.Struct_fn()
+	case 5:
 		fmt.Println("Exiting now...")
 		os.Exit(0)
 	default:
 		fmt.Println("Try again")
 		runApp()
 	}
-}
-
-func getUserInput(infoText string) (float64, error) {
-	var userInput float64
-
-	fmt.Print(infoText)
-	fmt.Scan(&userInput)
-
-	if userInput <= 0 {
-		return 0, errors.New("Value must be a positive number.")
-	}
-
-	return userInput, nil
 }

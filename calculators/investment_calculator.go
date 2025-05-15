@@ -1,24 +1,26 @@
-package main
+package calculators
 
 import (
 	"fmt"
 	"math"
+
+	"github.com/shivamchhuneja/learning-go/helpers"
 )
 
-func investmentCalculator() {
+func InvestmentCalculator() {
 	const inflation = 7.5
 
-	investmentAmount, err := getUserInput("Enter an investment amount: ")
+	investmentAmount, err := helpers.GetUserInput("Enter an investment amount: ")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	expectedReturnRate, err := getUserInput("Enter expected return rate: ")
+	expectedReturnRate, err := helpers.GetUserInput("Enter expected return rate: ")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	years, err := getUserInput("Enter time period in years: ")
+	years, err := helpers.GetUserInput("Enter time period in years: ")
 	if err != nil {
 		fmt.Println(err)
 		return

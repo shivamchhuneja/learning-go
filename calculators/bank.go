@@ -1,15 +1,15 @@
-package main
+package calculators
 
 import (
 	"fmt"
 	"os"
 )
 
-func bankingMode() {
-	bankService(0.0)
+func BankingMode() {
+	BankService(0.0)
 }
 
-func bankService(balance float64) {
+func BankService(balance float64) {
 	var choice int
 
 	fmt.Println("\nWelcome to Go Bank")
@@ -24,19 +24,19 @@ func bankService(balance float64) {
 	switch choice {
 	case 1:
 		checkBalance(balance)
-		bankService(balance)
+		BankService(balance)
 	case 2:
 		balance = depositMoney(balance)
-		bankService(balance)
+		BankService(balance)
 	case 3:
 		balance = withdrawMoney(balance)
-		bankService(balance)
+		BankService(balance)
 	case 4:
 		fmt.Println("Thanks for banking with us!")
 		os.Exit(0)
 	default:
 		fmt.Println("Invalid option. Try again.")
-		bankService(balance)
+		BankService(balance)
 	}
 }
 
