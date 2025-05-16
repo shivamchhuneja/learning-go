@@ -8,27 +8,32 @@ import (
 )
 
 type User struct {
-	firstName string
-	lastName  string
-	birthDate string
+	FirstName string
+	LastName  string
+	BirthDate string
 	createdAt time.Time
 }
 
 func Struct_fn() {
-	userfirstName, _ := helpers.StrUserInput("Please enter your first name: ")
-	userlastName, _ := helpers.StrUserInput("Please enter your last name: ")
-	userBirthdate, _ := helpers.StrUserInput("Please enter your birthdate (MM/DD/YYYY): ")
+	FirstName, _ := helpers.StrUserInput("Please enter your first name: ")
+	LastName, _ := helpers.StrUserInput("Please enter your last name: ")
+	BirthDate, _ := helpers.StrUserInput("Please enter your birthdate (MM/DD/YYYY): ")
 
 	appUser := User{
-		firstName: userfirstName,
-		lastName:  userlastName,
-		birthDate: userBirthdate,
+		FirstName: FirstName,
+		LastName:  LastName,
+		BirthDate: BirthDate,
 		createdAt: time.Now(),
 	}
 
-	outputsUserDetails(appUser)
+	outputsUserDetails(&appUser)
 }
 
-func outputsUserDetails(u User) {
-	fmt.Println(u.firstName, u.lastName, u.birthDate)
+func outputsUserDetails(u *User) {
+	fmt.Println(u.FirstName, u.LastName, u.BirthDate)
+}
+
+func (u *User) ClearUserName() {
+	u.FirstName = ""
+	u.LastName = ""
 }
