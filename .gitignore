@@ -1,0 +1,11 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Vim swap/undo files
+*.swp
+*.swo
+*.un~
+
+# Ignore Go build artifacts
+*.out
+*.exe

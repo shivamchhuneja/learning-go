@@ -14,19 +14,46 @@ type User struct {
 	createdAt time.Time
 }
 
-func Struct_fn() {
-	FirstName, _ := helpers.StrUserInput("Please enter your first name: ")
-	LastName, _ := helpers.StrUserInput("Please enter your last name: ")
-	BirthDate, _ := helpers.StrUserInput("Please enter your birthdate (MM/DD/YYYY): ")
+type Admin struct {
+	Email    string
+	Password string
+	User
+}
 
-	appUser := User{
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		Email:    email,
+		Password: password,
+		User: User{
+			FirstName: "ADMIN",
+			LastName:  "ADMIN",
+			BirthDate: "---",
+			createdAt: time.Now(),
+		},
+	}
+}
+
+func NewUser(FirstName, LastName, BirthDate string) User {
+	return User{
 		FirstName: FirstName,
 		LastName:  LastName,
 		BirthDate: BirthDate,
 		createdAt: time.Now(),
 	}
+}
+
+func Struct_fn() {
+	UserFirstName, _ := helpers.StrUserInput("Please enter your first name: ")
+	UserLastName, _ := helpers.StrUserInput("Please enter your last name: ")
+	UserBirthDate, _ := helpers.StrUserInput("Please enter your birthdate (MM/DD/YYYY): ")
+
+	appUser := NewUser(UserFirstName, UserLastName, UserBirthDate)
 
 	outputsUserDetails(&appUser)
+
+	adminst := NewAdmin("test@test.com", "abc@123")
+
+	outputsUserDetails(&adminst.User)
 }
 
 func outputsUserDetails(u *User) {
